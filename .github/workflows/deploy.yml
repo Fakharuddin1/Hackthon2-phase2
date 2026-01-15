@@ -38,8 +38,10 @@ jobs:
         working-directory: ./frontend
 
       - name: Create .nojekyll file
-        run: touch ./frontend/out/.nojekyll
-        working-directory: ./frontend
+        run: |
+          mkdir -p ./frontend/out
+          touch ./frontend/out/.nojekyll
+        working-directory: .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
