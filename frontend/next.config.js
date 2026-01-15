@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Required for static exports
-  basePath: '/Hackthon2-phase2', // GitHub Pages subdirectory path (new repository name)
-  assetPrefix: '/Hackthon2-phase2', // Prefix for asset paths
-  trailingSlash: true, // Optional: adds trailing slashes to URLs
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined, // Required for static exports in production
+  basePath: process.env.NODE_ENV === 'production' ? '/Hackthon2-phase2' : '', // GitHub Pages subdirectory path (only in production)
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Hackthon2-phase2' : '', // Prefix for asset paths (only in production)
+  trailingSlash: process.env.NODE_ENV === 'production' ? true : undefined, // Only in production
   env: {
-    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fakharuddin1.github.io/Hackthon2-phase2/api', // Updated for GitHub Pages
+    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || (process.env.NODE_ENV === 'production'
+      ? 'https://fakharuddin1.github.io/Hackthon2-phase2/api' // Production API URL
+      : 'http://localhost:8000/api'), // Local development API URL
   },
   images: {
-    unoptimized: true, // Required for GitHub Pages
+    unoptimized: process.env.NODE_ENV === 'production' ? true : undefined, // Required for GitHub Pages
     remotePatterns: [
       {
         protocol: 'http',
