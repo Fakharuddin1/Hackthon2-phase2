@@ -5,7 +5,7 @@ const nextConfig = {
   assetPrefix: '/Hackthon2-phase2', // Prefix for asset paths
   trailingSlash: true, // Optional: adds trailing slashes to URLs
   env: {
-    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api',
+    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fakharuddin1.github.io/Hackthon2-phase2/api', // Updated for GitHub Pages
   },
   images: {
     unoptimized: true, // Required for GitHub Pages
@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'your-backend-domain.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'fakharuddin1.github.io',
+      }
     ],
   },
 };
